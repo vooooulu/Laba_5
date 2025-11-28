@@ -1,0 +1,60 @@
+// ... (весь предыдущий код до main) ...
+
+// ========== НОВЫЙ КОД ==========
+/*
+ * Демонстрация проблем срезки объектов
+ */
+void demonstrateSlicing() {
+    cout << "\n=== Демонстрация срезки объектов ===" << endl;
+    
+    Desc desc;
+    cout << "До передачи в func1:" << endl;
+    desc.draw();
+    
+    cout << "После передачи в func1 (срезка):" << endl;
+    func1(desc); // Произойдет срезка!
+}
+
+/*
+ * Сравнение classname() и isA()
+ */
+void compareMethods() {
+    cout << "\n=== Сравнение classname() и isA() ===" << endl;
+    
+    Base* obj = new Desc();
+    
+    cout << "classname(): " << obj->classname() << endl;
+    cout << "isA('Base'): " << obj->isA("Base") << endl;
+    cout << "isA('Desc'): " << obj->isA("Desc") << endl;
+    
+    delete obj;
+}
+
+int main() {
+    cout << "=== Демонстрация ООП ===" << endl;
+    
+    // Создание объектов
+    Base base;
+    Desc desc;
+    
+    // Демонстрация полиморфизма
+    Base* polyPtr = new Desc();
+    polyPtr->draw();
+    
+    // Демонстрация приведения типов
+    demonstrateCasts();
+    
+    // Передача в функции
+    cout << "\n=== Передача в функции ===" << endl;
+    func1(desc);
+    func2(&desc);
+    func3(desc);
+    
+    // Новые демонстрации
+    demonstrateSlicing();
+    compareMethods();
+    
+    delete polyPtr;
+    return 0;
+}
+// ========== КОНЕЦ НОВОГО КОДА ==========
