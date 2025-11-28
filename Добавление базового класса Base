@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string>
+#include <memory>
+
+using namespace std;
+
+class Base {
+public:
+    // Конструктор по умолчанию
+    Base() {
+        cout << "[Base] Конструктор Base()" << endl;
+    }
+
+    // Конструктор через указатель
+    Base(Base* obj) {
+        cout << "[Base] Конструктор Base(Base*)" << endl;
+    }
+
+    // Конструктор через ссылку
+    Base(Base& obj) {
+        cout << "[Base] Конструктор Base(Base&)" << endl;
+    }
+
+    // Виртуальный деструктор
+    virtual ~Base() {
+        cout << "[Base] Деструктор ~Base()" << endl;
+    }
+
+    // Виртуальный метод
+    virtual void draw() {
+        cout << "[Base] draw()" << endl;
+    }
+
+    // Проверка принадлежности классу
+    virtual string classname() const { return "Base"; }
+    
+    virtual bool isA(const string& className) const { 
+        return className == "Base"; 
+    }
+};
