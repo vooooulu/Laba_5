@@ -1,0 +1,34 @@
+// ... (весь предыдущий код Base и Desc) ...
+
+// ========== НОВЫЙ КОД ==========
+// Функции для демонстрации передачи объектов
+void func1(Base obj) { 
+    cout << "[func1] Внутри функции по значению" << endl;
+    obj.draw();
+}
+
+void func2(Base *obj) { 
+    cout << "[func2] Внутри функции по указателю" << endl;
+    obj->draw();
+}
+
+void func3(Base &obj) { 
+    cout << "[func3] Внутри функции по ссылке" << endl;
+    obj.draw();
+}
+
+// Демонстрация безопасного приведения типов
+void demonstrateCasts() {
+    cout << "\n=== Демонстрация приведения типов ===" << endl;
+    
+    Base* basePtr = new Desc();
+    
+    // Безопасное приведение
+    if (auto desc = dynamic_cast<Desc*>(basePtr)) {
+        cout << "Динамическое приведение успешно!" << endl;
+        desc->draw();
+    }
+    
+    delete basePtr;
+}
+// ========== КОНЕЦ НОВОГО КОДА ==========
